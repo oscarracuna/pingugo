@@ -4,6 +4,7 @@ import (
 	"encoding/csv"
 	"fmt"
 	"os"
+	//"os/exec"
 	//probing "github.com/prometheus-community/pro-bing"
 )
 
@@ -47,7 +48,22 @@ func main() {
 	fmt.Scan(&cap)
 	if record, found := data[cap]; found {
 		fmt.Printf("For cap %s: lan = %s, cer = %s, per = %s\n", cap, record.LAN, record.CER, record.PER)
+
+		fmt.Println("Error:", err)
+		return
 	} else {
 		fmt.Printf("Cap %s not found\n", cap)
 	}
+
+	/*
+		cmd := exec.Command("cmd.exe", "/C", "ping %s", lan)
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+
+			err := cmd.Run()
+			if err != nil {
+				fmt.Println("error", err)
+				return
+			}
+	*/
 }
